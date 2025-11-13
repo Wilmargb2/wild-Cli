@@ -1,23 +1,29 @@
 package main
 
 import (
-	"Wild/Helpers"
 	"Wild/Flags"
+	"Wild/Actions"
 	"fmt"
 	"os"
-	"strings"
 )
 
 func main() {
 
 	dir, _ := os.Getwd()
-	CompName := flags.InitFlags()
+	Flags := flags.InitFlags()
 
-	if strings.TrimSpace(*CompName) == "" {
-		fmt.Println("El nombre del componente es obligatorio y no puede estar vacio")
-		return
+	switch {
+		case Flags.Make && Flags.CompName != "":
+			actions.CreateComp(dir, &Flags.CompName)
+
+		case Flags.Make && Flags.HookName != "":
+			actions.CreateHook(dir, &Flags.HookName)
+		
+		case Flags.Make && Flags.ServiceName != "":
+			actions.CreateService(dir, &Flags.ServiceName)
+			
+		default:
+			fmt.Println("Comando no reconocido usa --help para ver la ayuda")
 	}
-
-	helpers.CreateComp(dir, CompName)
 
 }
