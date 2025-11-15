@@ -33,7 +33,7 @@ func ServiceTemplate(name string) string {
 	return fmt.Sprintf(`//Types
 import { use%[1]sServiceProps } from "../Types/use%[1]sServiceTypes";
 
-export function use%[1]sService({}: %[1]sServiceProps) {
+export function use%[1]sService({}: use%[1]sServiceProps) {
 	return (
 		<></>
 	);
