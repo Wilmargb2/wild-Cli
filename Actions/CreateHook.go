@@ -31,9 +31,9 @@ func CreateHook(baseDir string, hookName *string) {
 
 func HookTemplate(name string) string {
 	return fmt.Sprintf(`//Types
-import { %[1]sCompProps } from "../Types/use%[1]sHookTypes";
+import { use%[1]sHookProps } from "../Types/use%[1]sHookTypes";
 
-export function use%[1]sHook({}: %[1]sCompProps) {
+export function use%[1]sHook({}: use%[1]sHookProps) {
 	return (
 		<></>
 	);

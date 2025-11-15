@@ -12,12 +12,12 @@ import (
 func CreateService(baseDir string, serviceName *string) {
 
 	if strings.Contains(strings.ToLower(*serviceName), "service") {
-		fmt.Println("El nombre del hook debe ser sin 'use' y sin terminar en 'Hook'")
+		fmt.Println("El nombre del service debe ser sin 'use' y sin terminar en 'Service'")
 		return
 	}
 
 	if strings.Contains(strings.ToLower(*serviceName), "use") {
-		fmt.Println("El nombre del hook debe ser sin 'use' y sin terminar en 'Hook'")
+		fmt.Println("El nombre del service debe ser sin 'use' y sin terminar en 'Service'")
 		return
 	}
 
@@ -31,9 +31,9 @@ func CreateService(baseDir string, serviceName *string) {
 
 func ServiceTemplate(name string) string {
 	return fmt.Sprintf(`//Types
-import { %[1]sCompProps } from "../Types/use%[1]sHookTypes";
+import { use%[1]sServiceProps } from "../Types/use%[1]sServiceTypes";
 
-export function use%[1]sHook({}: %[1]sCompProps) {
+export function use%[1]sService({}: %[1]sServiceProps) {
 	return (
 		<></>
 	);
@@ -42,7 +42,7 @@ export function use%[1]sHook({}: %[1]sCompProps) {
 }
 
 func ServiceTypesTemplate(name string) string {
-	return fmt.Sprintf(`export interface use%[1]sHookProps {
+	return fmt.Sprintf(`export interface use%[1]sServiceProps {
 
 }
 `, name)
